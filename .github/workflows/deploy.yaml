@@ -24,6 +24,7 @@ jobs:
       - run: docker push tjid421/multi-worker
 
   deploy:
+    runs-on: ubuntu-latest
     steps:
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
@@ -39,4 +40,3 @@ jobs:
           region: us-east-2
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
-          
